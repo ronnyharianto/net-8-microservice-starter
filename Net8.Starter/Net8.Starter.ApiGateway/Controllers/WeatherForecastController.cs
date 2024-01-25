@@ -31,7 +31,7 @@ namespace Net8.Starter.BackEnd.APIGateway.Controllers
 				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
 				TemperatureC = Random.Shared.Next(-20, 55),
 				Summary = Summaries[Random.Shared.Next(Summaries.Length)],
-				Country = Countries[Random.Shared.Next(Countries.Length)]
+				Country = Countries[Random.Shared.Next(Countries.Length)],
 			})
 			.ToArray();
 		}
