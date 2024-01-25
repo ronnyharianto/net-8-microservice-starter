@@ -1,0 +1,5 @@
+﻿@Net8.Starter.BackEnd.APIGateway_HostAddress = http://localhost:5000
+
+GET {{Net8.Starter.BackEnd.APIGateway_HostAddress}}/weatherforecast
+
+###
