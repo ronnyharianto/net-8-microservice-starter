@@ -11,6 +11,11 @@ namespace Net8.Starter.BackEnd.APIGateway.Controllers
 			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 		};
 
+		private static readonly string[] Countries = new[]
+		{
+			"United States", "Oman", "Japan", "Korea", "China", "Qatar", "Rusia", "Indonesia", "United Kingdom", "Denmark"
+		};
+
 		private readonly ILogger<WeatherForecastController> _logger;
 
 		public WeatherForecastController(ILogger<WeatherForecastController> logger)
@@ -25,7 +30,8 @@ namespace Net8.Starter.BackEnd.APIGateway.Controllers
 			{
 				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
 				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+				Summary = Summaries[Random.Shared.Next(Summaries.Length)],
+				Country = Countries[Random.Shared.Next(Countries.Length)],
 			})
 			.ToArray();
 		}
