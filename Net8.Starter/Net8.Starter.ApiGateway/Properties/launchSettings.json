@@ -4,7 +4,8 @@
     "Net8.Starter.BackEnd.APIGateway": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": false
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }

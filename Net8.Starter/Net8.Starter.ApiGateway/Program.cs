@@ -1,15 +1,34 @@
-var builder = WebApplication.CreateBuilder(args);
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
-// Add services to the container.
+internal class Program
+{
+	private static void Main(string[] args)
+	{
+		var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+		builder.Services.AddControllers();
 
-builder.WebHost.UseUrls("http://*:5000");
+		builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+		builder.Services.AddOcelot(builder.Configuration);
 
-var app = builder.Build();
+		builder.WebHost.UseUrls("http://*:5000");
 
-// Configure the HTTP request pipeline.
+		var app = builder.Build();
 
-app.MapControllers();
+		#region MapControllers()
+		//Use this code if there is any endpoint in the service which running gateway using ocelot that need to access by the client
+		//app.UseRouting().UseEndpoints(ep =>
+		//{
+		//	ep.MapControllers();
+		//});
 
-app.Run();
+		//Use this code if there is none endpoint in the service which running gateway using ocelot that need to access by the client
+		app.MapControllers();
+		#endregion
+
+		app.UseOcelot().Wait();
+
+		app.Run();
+	}
+}
